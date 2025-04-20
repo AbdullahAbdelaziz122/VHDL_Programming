@@ -2,11 +2,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
   
-entity timerTb
+entity timerTb2
  is
 end entity;
   
-architecture sim of timerTb
+architecture sim of timerTb2
  is
   
     -- We're slowing down the clock to speed up simulation time
@@ -22,7 +22,7 @@ architecture sim of timerTb
 begin
   
     -- The Device Under Test (DUT)
-    i_Timer : entity work.timer(rtl)
+    i_Timer : entity work.timer2(rtl)
     generic map(ClockFrequencyHz => ClockFrequencyHz)
     port map (
         Clk     => Clk,
