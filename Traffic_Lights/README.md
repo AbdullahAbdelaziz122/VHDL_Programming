@@ -45,3 +45,5 @@ The provided testbench (`TrafficLightTB`) simulates the `TrafficLight` module. I
 
 ## State Diagram
 
+![Traffic Light State Flow Diagram](DesignData/TrafficLight.png)
+
