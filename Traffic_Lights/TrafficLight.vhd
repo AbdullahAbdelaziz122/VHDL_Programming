@@ -44,6 +44,21 @@ architecture rtl of TrafficLight is
 begin
   
     process(Clk) is
+
+        impure function CounterExpired
+        (
+            Minutes : integer := 0;
+            Seconds : integer := 0) return boolean is
+        
+        begin
+            if Counter = CounterVal(Minutes, Seconds) then
+                Counter <= 0;
+                return true; 
+            else
+                return false;
+            end if; 
+        end function;
+
     begin
         if rising_edge(Clk) then
     
@@ -78,8 +93,7 @@ begin
                     when NorthNext => 
                         NorthRed <= '1';
                         WestRed <= '1';
-                        if Counter = ClockFrequencyHz * 5 - 1 then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 5) then 
                             State <= StartNorth;
                         end if;
                     
@@ -89,8 +103,7 @@ begin
                         NorthRed    <= '1';
                         NorthYellow <= '1';
                         WestRed     <= '1';
-                        if Counter = CounterVal(Seconds => 5) then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 5) then 
                             State <= North;
                         end if;
                         
@@ -99,8 +112,7 @@ begin
                     when North =>
                         NorthGreen <= '1';
                         WestRed <='1';
-                        if Counter = CounterVal(Seconds => 60) then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 60) then 
                             State <= StopNorth;
                         end if;
                         
@@ -109,8 +121,7 @@ begin
                     when StopNorth =>
                         NorthYellow <= '1';
                         WestRed <= '1';
-                        if Counter = CounterVal(Seconds => 5) then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 5) then 
                             State <= WestNext;
                         end if;
                         
@@ -119,8 +130,7 @@ begin
                     when WestNext =>
                         NorthRed <= '1';
                         WestRed <= '1';
-                        if Counter = CounterVal(Seconds => 5) then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 5) then 
                             State <= StartWest;
                         end if;
                         
@@ -130,8 +140,7 @@ begin
                         WestRed <= '1';
                         WestYellow <= '1';
                         NorthRed <= '1';
-                        if Counter = CounterVal(Seconds => 5) then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 5) then 
                             State <= West;
                         end if;
                         
@@ -141,8 +150,7 @@ begin
                     when West =>
                         WestGreen <= '1';
                         NorthRed <= '1';
-                        if Counter = CounterVal(Seconds => 60) then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 60) then 
                             State <= StopWest;
                         end if;
                         
@@ -151,15 +159,11 @@ begin
                     when StopWest =>
                         WestYellow <= '1';
                         NorthRed <= '1';
-                        if Counter = CounterVal(Seconds => 5) then 
-                            Counter <= 0;
+                        if CounterExpired(Seconds => 5) then 
                             State <= NorthNext;
                         end if;
-                        
-
+                    
                 end case;
-
-			
             end if;
         end if;
     end process;
