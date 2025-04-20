@@ -1,0 +1,8 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="Decoder_3_8.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>Decoder_3_8.vhd</HardwareStartPath>
+  </PropertyGroup>
+</Project>

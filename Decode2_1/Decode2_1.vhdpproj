@@ -1,0 +1,9 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="Decode2_1.vhd" />
+    <File Include="Decoder2_1_With_enable.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>Decode2_1.vhd</HardwareStartPath>
+  </PropertyGroup>
+</Project>

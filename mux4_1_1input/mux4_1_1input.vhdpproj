@@ -1,0 +1,8 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="mux4_1_1input.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>mux4_1_1input.vhd</HardwareStartPath>
+  </PropertyGroup>
+</Project>

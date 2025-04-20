@@ -1,0 +1,10 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'waitOnWaitUntil.vhd'
+]
+[libraries.work]
+files = [
+	'waitOnWaitUntil.vhd'
+]
+# auto-generated-end

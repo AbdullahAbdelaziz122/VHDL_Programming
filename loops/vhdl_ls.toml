@@ -1,0 +1,12 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'forLoop.vhd',
+	'loops.vhd'
+]
+[libraries.work]
+files = [
+	'forLoop.vhd',
+	'loops.vhd'
+]
+# auto-generated-end

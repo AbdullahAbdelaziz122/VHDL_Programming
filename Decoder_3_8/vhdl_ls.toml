@@ -1,0 +1,10 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'Decoder_3_8.vhd'
+]
+[libraries.work]
+files = [
+	'Decoder_3_8.vhd'
+]
+# auto-generated-end

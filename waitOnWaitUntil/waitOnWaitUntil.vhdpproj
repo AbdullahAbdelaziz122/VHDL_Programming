@@ -1,0 +1,8 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="waitOnWaitUntil.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>waitOnWaitUntil.vhd</HardwareStartPath>
+  </PropertyGroup>
+</Project>

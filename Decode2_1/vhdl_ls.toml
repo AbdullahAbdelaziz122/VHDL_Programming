@@ -1,0 +1,12 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'Decode2_1.vhd',
+	'Decoder2_1_With_enable.vhd'
+]
+[libraries.work]
+files = [
+	'Decode2_1.vhd',
+	'Decoder2_1_With_enable.vhd'
+]
+# auto-generated-end

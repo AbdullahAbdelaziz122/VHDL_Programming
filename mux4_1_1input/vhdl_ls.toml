@@ -1,0 +1,10 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'mux4_1_1input.vhd'
+]
+[libraries.work]
+files = [
+	'mux4_1_1input.vhd'
+]
+# auto-generated-end

@@ -1,0 +1,12 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'delyTime.vhd',
+	'loops.vhd'
+]
+[libraries.work]
+files = [
+	'delyTime.vhd',
+	'loops.vhd'
+]
+# auto-generated-end

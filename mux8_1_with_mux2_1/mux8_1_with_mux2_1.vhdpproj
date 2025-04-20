@@ -1,0 +1,8 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="mux8_1_with_mux2_1.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>mux8_1_with_mux2_1.vhd</HardwareStartPath>
+  </PropertyGroup>
+</Project>

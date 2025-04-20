@@ -1,0 +1,8 @@
+﻿<Project>
+  <ItemGroup>
+    <File Include="looping.vhd" />
+  </ItemGroup>
+  <PropertyGroup>
+    <HardwareStartPath>looping.vhd</HardwareStartPath>
+  </PropertyGroup>
+</Project>

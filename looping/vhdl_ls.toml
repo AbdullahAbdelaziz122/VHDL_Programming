@@ -1,0 +1,10 @@
+# auto-generated
+[Libraries]
+work.files = [
+	'looping.vhd'
+]
+[libraries.work]
+files = [
+	'looping.vhd'
+]
+# auto-generated-end
