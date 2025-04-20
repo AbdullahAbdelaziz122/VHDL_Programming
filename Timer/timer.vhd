@@ -5,54 +5,54 @@ use ieee.numeric_std.all;
 entity timer is
 generic(clockFrequency : integer);
 port(
-	clk     : in std_logic;
+	Clk     : in std_logic;
 	nRst    : in std_logic; -- Negative Reset
-	seconds : inout integer;
-	minutes : inout integer;
-	hours   : inout integer
+	Seconds : inout integer;
+	Minutes : inout integer;
+	Hours   : inout integer
 );
 end entity timer;
 architecture rtl of timer is
 
-	signal ticks : integer;
+	signal Ticks : integer;
 	
 begin
-	process (clk) is
+	process (Clk) is
 	begin
 		
-		if rising_edge(clk) then
+		if rising_edge(Clk) then
 			if nRst = '0' then
-				ticks   <= 0;
-				seconds <= 0;
-				minutes <= 0;
-				hours   <= 0;
+				Ticks   <= 0;
+				Seconds <= 0;`
+				Minutes <= 0;
+				Hours   <= 0;
 			else
 				
 				-- True once every second
-				if ticks = clockFrequency - 1 then
-					ticks <= 0;
+				if Ticks = clockFrequency - 1 then
+					Ticks <= 0;
 					
-					if seconds = 59 then
-						seconds <= 0;
+					if Seconds = 59 then
+						Seconds <= 0;
 						
 						-- True once every minute
-						if minutes = 59 then
-							minutes <= 0;
+						if Minutes = 59 then
+							Minutes <= 0;
 							
 							-- True once every hour
-							if hours = 23 then
-								hours <= 0;
+							if Hours = 23 then
+								Hours <= 0;
 							else
-								hours <= hours + 1;
+								Hours <= Hours + 1;
 							end if;
 						else
-							minutes <= minutes + 1;
+							Minutes <= Minutes + 1;
 						end if;
 					else
-						seconds <= seconds + 1;
+						Seconds <= Seconds + 1;
 					end if;
 				else
-					ticks <= ticks +1;
+					Ticks <= Ticks +1;
 				end if;
 			end if;
 		end if;
