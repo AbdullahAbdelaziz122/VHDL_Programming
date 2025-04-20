@@ -20,6 +20,18 @@ end entity;
   
   
 architecture rtl of TrafficLight is
+
+    -- calculate  the number if clock cycles in minutes / seconds 
+    function CounterVal(
+        Minutes : integer := 0;
+        Seconds : integer := 0
+        ) return integer is
+
+            variable TotalSeconds : integer;
+    begin
+        TotalSeconds := Seconds + Minutes * 60;
+        return TotalSeconds * ClockFrequencyHz - 1;
+    end function;
 	
     -- Enumerated type declaration and state signal declaration
     type t_state is (NorthNext, StartNorth, North, StopNorth, WestNext, StartWest, West, StopWest);
@@ -77,7 +89,7 @@ begin
                         NorthRed    <= '1';
                         NorthYellow <= '1';
                         WestRed     <= '1';
-                        if Counter = ClockFrequencyHz * 5 - 1 then 
+                        if Counter = CounterVal(Seconds => 5) then 
                             Counter <= 0;
                             State <= North;
                         end if;
@@ -87,7 +99,7 @@ begin
                     when North =>
                         NorthGreen <= '1';
                         WestRed <='1';
-                        if Counter = ClockFrequencyHz * 60 - 1 then 
+                        if Counter = CounterVal(Seconds => 60) then 
                             Counter <= 0;
                             State <= StopNorth;
                         end if;
@@ -97,7 +109,7 @@ begin
                     when StopNorth =>
                         NorthYellow <= '1';
                         WestRed <= '1';
-                        if Counter = ClockFrequencyHz * 5 - 1 then 
+                        if Counter = CounterVal(Seconds => 5) then 
                             Counter <= 0;
                             State <= WestNext;
                         end if;
@@ -107,7 +119,7 @@ begin
                     when WestNext =>
                         NorthRed <= '1';
                         WestRed <= '1';
-                        if Counter = ClockFrequencyHz * 5 - 1 then 
+                        if Counter = CounterVal(Seconds => 5) then 
                             Counter <= 0;
                             State <= StartWest;
                         end if;
@@ -118,7 +130,7 @@ begin
                         WestRed <= '1';
                         WestYellow <= '1';
                         NorthRed <= '1';
-                        if Counter = ClockFrequencyHz * 5 - 1 then 
+                        if Counter = CounterVal(Seconds => 5) then 
                             Counter <= 0;
                             State <= West;
                         end if;
@@ -129,7 +141,7 @@ begin
                     when West =>
                         WestGreen <= '1';
                         NorthRed <= '1';
-                        if Counter = ClockFrequencyHz * 60 - 1 then 
+                        if Counter = CounterVal(Seconds => 60) then 
                             Counter <= 0;
                             State <= StopWest;
                         end if;
@@ -139,7 +151,7 @@ begin
                     when StopWest =>
                         WestYellow <= '1';
                         NorthRed <= '1';
-                        if Counter = ClockFrequencyHz * 5 - 1 then 
+                        if Counter = CounterVal(Seconds => 5) then 
                             Counter <= 0;
                             State <= NorthNext;
                         end if;
